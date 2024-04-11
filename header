@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+bool WordSearchPuzzle(char **puzzle, int rows,int cols ,char *target,int index)
+{
+        if ( index == sizeof(target) )
+            return true;
+
+        if (  puzzle[rows][cols] != target[index] )
+            return false;
+
+        char original = puzzle[rows][cols];
+        puzzle[rows][cols] = ' '; // Mark cell as visited
+
+        bool found =WordSearchPuzzle ( puzzle,  rows - 1, cols, target, index + 1 ) ||
+            WordSearchPuzzle( puzzle,  rows + 1, cols, target, index + 1 ) ||
+            WordSearchPuzzle( puzzle, rows, cols - 1, target, index + 1 ) ||
+            WordSearchPuzzle( puzzle, rows, cols + 1, target, index + 1 );
+
+        puzzle[rows][cols] = original; // Restore original character
+        return found;
+};
+
