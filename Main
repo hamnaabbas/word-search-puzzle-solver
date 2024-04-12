@@ -1,0 +1,30 @@
+int rows = 8, cols = 8;
+int main( )
+{
+	 string p[7][7] = { "SNSSMIV",  "VOMEIV", "NIUONIV", "TNSMAIV","GUGGEE", "MOMPETS", "ORIGINS" };
+	string** puzzle = new string* [rows];
+	for ( int i = 0; i < rows; i++ )
+	{
+		puzzle[i] = new string[cols];
+	}
+	
+     string *target=new string[rows];
+	for ( int i = 0; i < 7; i++ )
+	{
+		for ( int j = 0; j < 7; j++ )
+		{
+			puzzle[i][j] = p[i][j];
+			//cout << puzzle[i][j]<<" ";
+		}
+		cout << endl;
+	}
+	int rows_, cols_, index;
+	cout << "Enter number of target words in a letter: " << endl;
+	cin >> index;
+	for ( int i = 0; i < index; i++ )
+	{
+		cin >> target[i];
+	}
+	WordSearchPuzzle( puzzle, rows, cols,target,index);
+};
+		
